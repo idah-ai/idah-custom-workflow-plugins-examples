@@ -72,29 +72,29 @@ The **[mock-qc-app](./mock-qc-app)** lets you run the full QC workflow end-to-en
 ## How Custom Workflows Work
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                     IDAH Dataset Service                                    │
-│                                                                             │
-│   Plugin Manager          Workflow Registry    Dataset Model                │
-│   ┌──────────┐            ┌───────────────┐    ┌───────────┐               │
-│   │ Load     │ ──register─▶│ custom-       │    │ workflow  │               │
-│   │ plugins  │            │ annotation    │    │ _name     │               │
-│   └──────────┘            │ workflow      │    │ (per      │               │
-│                           └───────┬───────┘    │  dataset) │               │
-│                                   │             └───────────┘               │
-│                          ┌───────▼───────┐                                  │
-│                          │ AASM State    │     Entry Submission             │
-│                          │ Machine      │     ┌─────────────┐               │
-│                          │              │────▶│ Look up      │              │
-│                          │ start        │     │ workflow by  │              │
-│                          │  ↓            │     │ workflow_name│              │
-│                          │ annotate     │     └──────┬──────┘               │
-│                          │  ↓            │            │                      │
-│                          │ review       │     ┌──────▼──────┐               │
-│                          │  ↓            │     │ Execute     │              │
-│                          │ done         │     │ transitions │              │
-│                          └──────────────┘     └─────────────┘               │
-└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                     IDAH Dataset Service                                     │
+│                                                                              │
+│   Plugin Manager           Workflow Registry    Dataset Model                │
+│   ┌──────────┐             ┌───────────────┐    ┌───────────┐                │
+│   │ Load     │ ──register─▶│ custom-       │    │ workflow  │                │
+│   │ plugins  │             │ annotation    │    │ _name     │                │
+│   └──────────┘             │ workflow      │    │ (per      │                │
+│                            └───────┬───────┘    │  dataset) │                │
+│                                    │            └───────────┘                │
+│                            ┌───────▼──────┐                                  │
+│                            │ AASM State   │     Entry Submission             │
+│                            │ Machine      │     ┌──────────────┐             │
+│                            │              │────▶│ Look up      │             │
+│                            │ start        │     │ workflow by  │             │
+│                            │  ↓           │     │ workflow_name│             │
+│                            │ annotate     │     └──────┬───────┘             │
+│                            │  ↓           │            │                     │
+│                            │ review       │     ┌──────▼──────┐              │
+│                            │  ↓           │     │ Execute     │              │
+│                            │ done         │     │ transitions │              │
+│                            └──────────────┘     └─────────────┘              │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 1. **Plugin Loading** — On startup, the dataset service loads all plugins from the configured directory.
