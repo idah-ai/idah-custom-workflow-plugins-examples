@@ -2,7 +2,7 @@
 
 require "aasm"
 
-module ExampleWorkflow
+module DoubleReviewWorkflow
   module Workflow
     class CustomAnnotationWorkflow < ::Workflow::Base
       # This is an example custom workflow that extends the base workflow

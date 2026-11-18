@@ -21,7 +21,7 @@
 
   "entryPoints": {
     "backend": {
-      "module": "ExampleWorkflow",
+      "module": "DoubleReviewWorkflow",
       "path": "backends"
     }
   }

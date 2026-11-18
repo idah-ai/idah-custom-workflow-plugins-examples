@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ExampleWorkflow
+module DoubleReviewWorkflow
   module Workflow
     class CustomAnnotationDefinition
       def self.name
